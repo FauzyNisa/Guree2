@@ -1,0 +1,31 @@
+@layout('base')
+@yield('content')
+<!-- Main Section -->
+<section class="main-section">
+  <!-- Add Your Content Inside -->
+  <div class="content">
+    <!-- Remove This Before You Start -->
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Posting</h2>
+        <form action="{{ route('Todo.update', { id : todo.id} ) }}" method="post">
+          {{ csrfField() }}
+
+          <div class="form-group">
+            <label for="konten">Konten</label>
+            <textarea class="form-control" name="konten" cols="30" rows="10">{{ todo.konten }}</textarea>
+            <label for="foto">Foto</label>
+            <input type="file" name="foto" value="{{ todo.fote }}"/>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-sm btn-success">Submit</button>
+          </div>
+        </form>
+        <a href="{{ route('Todo.index') }}">Kembali</a>
+      </div>
+    </div>
+  </div>
+  <!-- /.content -->
+</section>
+<!-- /.main-section -->
+@endyield

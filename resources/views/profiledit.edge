@@ -1,0 +1,69 @@
+@layout('base')
+@yield('content')
+<!-- Main Section -->
+<section class="main-section">
+  <!-- Add Your Content Inside -->
+  <div class="content">
+    <!-- Remove This Before You Start -->
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Pengaturan Akun</h2>
+        <form action="{{ route('Profile.update', { id : user.id} ) }}" method="post">
+          {{ csrfField() }}
+
+          <div class="form-group">
+            <label for="nuptk">NUPTK</label>
+            <input class="form-control" type="text" name="nuptk" placeholder="nuptk" value="{{ user.nuptk }}" disabled>
+          </div>
+          <div class="form-group">
+            <label for="nama">Nama</label>
+            <input class="form-control" type="name" name="nama" placeholder="nama" value="{{ user.nama }}">
+          </div>
+          <div class="form-group">
+            <label for="tempat_ngajar">Tempat Mengajar</label>
+            <input class="form-control" type="text" name="tempat_ngajar" placeholder="Tempat Mengajar" value="{{ user.tempat_ngajar }}">
+          </div>
+          <div class="form-group">
+            <label for="tgl">Tanggal Lahir</label>
+            <input class="form-control" type="date" name="tgl" placeholder="Tanggal Lahir" value="{{ user.tgl }}">
+          </div>
+          <div class="form-group">
+            <label for="jk">Jenis Kelamin</label>
+            <input class="form-control" type="text" name="jk" placeholder="Jenis Kelamin" value="{{ user.jk }}">
+          </div>
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input class="form-control" type="text" name="username" placeholder="username" value="{{ user.username }}">
+          </div>
+          <div class="form-group">
+            <label for="email">E-Mail</label>
+            <input class="form-control" type="email" name="email" placeholder="email" value="{{ user.email }}">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input class="form-control" type="password" name="password" placeholder="password" value="{{ user.password }}">
+          </div>
+          <div class="form-group">
+            <label for="matpel">Mata Pelajaran</label>
+            <input class="form-control" type="text" name="mapel" placeholder="mata pelajaran" value="{{ user.matpel }}">
+          </div>
+          <div class="form-group">
+            <label for="status">Status</label>
+            <input class="form-control" type="text" name="status" placeholder="status" value="{{ user.status }}">
+          </div>
+          <div class="form-group">
+            <label for="foto">Foto</label>
+            <input class="form-control" type="image" name="foto" placeholder="foto" value="{{ user.foto }}">
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-sm btn-success">Submit</button>
+          </div>
+        </form>
+        <a href="{{ route('Profile.index') }}">Kembali</a>
+      </div>
+    </div>
+  </div>
+  <!-- /.content -->
+</section>
+<!-- /.main-section -->
+@endyield

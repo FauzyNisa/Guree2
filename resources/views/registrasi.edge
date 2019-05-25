@@ -1,0 +1,57 @@
+@layout('baseregister')
+@yield('content')
+<!-- Main Section -->
+<section class="main-section">
+  <!-- Add Your Content Inside -->
+  <div class="content">
+    <!-- Remove This Before You Start -->
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Registrasi</h2>
+        <form action="{{ route('Auth.registrasi') }}" method="post">
+          {{ csrfField() }}
+          <div class="form-group">
+            <label for="nuptk">NUPTK</label>
+            <input class="form-control" type="text" name="nuptk" placeholder="nuptk">
+          </div>
+          <div class="form-group">
+            <label for="nama">Nama</label>
+            <input class="form-control" type="name" name="nama" placeholder="nama">
+          </div>
+          <div class="form-group">
+            <label for="tempat_ngajar">Tempat Mengajar</label>
+            <input class="form-control" type="text" name="tempat_ngajar" placeholder="Tempat Mengajar">
+          </div>
+          <div class="form-group">
+            <label for="tgl">Tanggal Lahir</label>
+            <input class="form-control" type="date" name="tgl" placeholder="Tanggal Lahir">
+          </div>
+          <div class="form-group">
+            <label for="jk">Jenis Kelamin</label>
+            <input class="form-control" type="text" name="jk" placeholder="Jenis Kelamin">
+          </div>
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input class="form-control" type="text" name="username" placeholder="username">
+          </div>
+          <div class="form-group">
+            <label for="email">E-Mail</label>
+            <input class="form-control" type="email" name="email" placeholder="email">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input class="form-control" type="password" name="password" placeholder="password">
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-sm btn-success">Submit</button>
+          </div>
+        </form>
+        <a href="{{ route('Auth.indexLogin') }}">LOGIN</a>
+      </div>
+    </div>
+  </div>
+  <!-- /.content -->
+</section>
+<!-- /.main-section -->
+@endyield
