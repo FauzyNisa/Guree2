@@ -29,15 +29,15 @@ class AuthController {
   }
 
   async login({ request, response, auth, session }) {
-    const { email, password } = request.all()
+    const { email, password } = request.all() //ini untuk nerima inputannya
     try {
-      await auth.attempt(email, password)
-    } catch (e) {
+      await auth.attempt(email, password) //ini untuk cek di db
+    } catch (e) { //ini misal email atau password gaada
       session.flashExcept(['password'])
       session.flash({ error: 'We cannot find any account with these credentials.' })
       return response.redirect('/')
     }
-    session.flash({ notification: 'berhasil login!' });
+    session.flash({ notification: 'berhasil login!' }); //ini berhasil masuk
     return response.route('Todo.index')
   }
 

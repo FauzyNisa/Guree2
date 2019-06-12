@@ -27,7 +27,7 @@ Route.get('/', 'TodoController.index').as('Todo.index').middleware(['auth'])
 Route.get('/create', 'TodoController.create').as('Todo.create')
 Route.get('/edit/:id', 'TodoController.edit').as('Todo.edit')
 Route.get('/delete/:id', 'TodoController.delete').as('Todo.delete')
-Route.post('/store', 'TodoController.store').as('Todo.store')
+Route.post('/store', 'TodoController.store').as('Todo.store').middleware(['auth'])
 Route.post('/update/:id', 'TodoController.update').as('Todo.update')
 
 Route.post('/registrasi', 'AuthController.registrasi').as('Auth.registrasi')
@@ -39,6 +39,8 @@ Route.post('/login', 'AuthController.login').as('Auth.login')
 Route.get('/profile', 'ProfileController.index').as('Profile.index').middleware(['auth'])
 Route.get('/p-edit/:id', 'ProfileController.edit').as('Profile.edit')
 Route.post('/p-update/:id', 'ProfileController.update').as('Profile.update')
+
+Route.get('/orang', 'OrangController.index').as('Orang.index').middleware(['auth'])
 
 Route.get('/logout', 'AuthController.logout').as('Auth.logout').middleware(['auth'])
 Route.post('/logout', 'AuthController.logout').as('Auth.logout').middleware(['auth'])

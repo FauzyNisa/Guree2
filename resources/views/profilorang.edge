@@ -1,0 +1,89 @@
+@layout('base')
+@yield('content')
+<!-- Main Section -->
+<section class="main-section">
+  <!-- Add Your Content Inside -->
+  <div class="container">
+    <!-- Remove This Before You Start -->
+    <div class="row">
+      <div class="col-md-12"  style="margin-top:30px;">
+        <a href="{{ route('Auth.logout') }}" class="btn btn-md btn-success">LOGOUT</a>
+        @if(flashMessage('notification'))
+        <div class="alert alert-success">{{ flashMessage('notification') }}</div>
+        @endif
+      </div>
+      <div class="col-md-12"  style="margin-top:20px;">
+        <table class="table table-hovered">
+          <thead>
+          <tr>
+            <td>NUPTK</td>
+            <td>Nama</td>
+            <td>Tanggal Lahir</td>
+            <td>Jenis Kelamin</td>
+            <td>Username</td>
+            <td>Email</td>
+            <td>Mata Pelajaran</td>
+            <td>Status</td>
+            <td>Foto</td>
+            <td>Action</td>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td> {{ user.nuptk }} </td>
+            <td> {{ user.nama }} </td>
+            <td> {{ user.tgl }} </td>
+            <td> {{ user.jk }} </td>
+            <td> {{ user.username }} </td>
+            <td> {{ user.email }} </td>
+            <td> {{ user.matpel }} </td>
+            <td> {{ user.status }} </td>
+            <td> {{ user.foto }} </td>
+            <td>
+              <a href="{{ route('Profile.edit', { id : user.id }) }}" class="btn btn-sm btn-primary">Edit</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <!-- Remove This Before You Start -->
+    <div class="row">
+      <div class="col-md-12"  style="margin-top:30px;">
+        @if(flashMessage('notification'))
+        <div class="alert alert-success">{{ flashMessage('notification') }}</div>
+        @endif
+      </div>
+      <div class="col-md-12"  style="margin-top:20px;">
+        <table class="table table-hovered">
+          <thead>
+          <tr>
+            <td>Username</td>
+            <td>Konten</td>
+            <td>Foto</td>
+            <td>Action</td>
+          </tr>
+          </thead>
+          <tbody>
+          @each(todo in todos)
+          <tr>
+            <td> {{ todo.username }} </td>
+            <td> {{ todo.konten }} </td>
+            <td> {{ todo.foto }} </td>
+            <td>
+              <a href="{{ route('Todo.delete', { id : todo.id }) }}" class="btn btn-sm btn-danger">Delete</a>
+              <a href="{{ route('Profile.edit', { id : user.id }) }}" class="btn btn-sm btn-primary">Edit</a>
+            </td>
+          </tr>
+          @endeach
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!-- /.content -->
+</section>
+<!-- /.main-section -->
+@endyield

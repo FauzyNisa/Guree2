@@ -2,13 +2,19 @@
 
 const { validate } = use('Validator')
 const User = use('App/Models/User')
+const Database  = use('Database')
 
 
 class ProfileController {
   async index({request, response, view, auth}) {
     const user = auth.user.toJSON()
     //const user = await User.all()
-    return view.render('profil', { user: user })
+    const data = await Database
+      .select('id', 'username', 'konten', 'foto')
+      .table('todos')
+      .where('username', user.username)
+    console.log(data)
+    return view.render('profil', { user: user, data })
     // return view.render('profil', {user: user})
   }
 
@@ -38,6 +44,13 @@ class ProfileController {
 
     session.flash({ notification: 'Update profil sukses' });
     return response.route('Profile.index')
+  }
+
+  async orang({request, response, view, auth}) {
+    //const user = auth.user.toJSON()
+    const user = await User.all()
+    return view.render('profilorang', { user: user.rows })
+    // return view.render('profil', {user: user})
   }
 }
 
